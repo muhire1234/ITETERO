@@ -3,7 +3,9 @@ import hero from "../assets/images/hero.png";
 import tea from "../assets/images/tea.jpeg";
 import juice from "../assets/images/juice.jpeg";
 import lique from "../assets/images/lique.jpeg";
-
+import smoothies from "../assets/images/smoothies.jpeg";
+import milk from "../assets/images/milk.jpeg";
+import ice from "../assets/images/ice.jpeg";
 export const menuCategories = [
   {
     id: "coffee",
@@ -13,80 +15,98 @@ export const menuCategories = [
     items: [
       {
         name: "Espresso",
-        ing: "The foundational concentrated shot used in most coffee drinks.",
-        ingLabel: "About",
+        ing: "2000",
+        ingLabel: "RWF",
       },
       {
         name: "Americano",
-        ing: "Espresso diluted with hot water; similar strength to regular brewed coffee.",
-        ingLabel: "About",
+        ing: "2000",
+        ingLabel: "RWF  ",
       },
       {
         name: "Caffe Latte",
-        ing: "Espresso with lots of steamed milk; mild and creamy.",
-        ingLabel: "About",
+        ing: "2500",
+        ingLabel: "RWF  ",
       },
       {
         name: "Cappuccino",
-        ing: "Espresso with equal parts steamed milk and foam.",
-        ingLabel: "About",
+        ing: "3000",
+        ingLabel: "RWF  ",
       },
       {
         name: "Flat White",
-        ing: "Espresso with finely textured milk (less foam than cappuccino).",
-        ingLabel: "About",
+        ing: "2500",
+        ingLabel: "RWF    ",
       },
       {
         name: "Macchiato",
-        ing: "Espresso with just a small amount of milk added.",
-        ingLabel: "About",
+        ing: "2500",
+        ingLabel: "RWF  ",
       },
       {
         name: "Mocha",
-        ing: "Espresso combined with chocolate and milk.",
-        ingLabel: "About",
+        ing: "3000",
+        ingLabel: "RWF ",
       },
       {
         name: "Drip Coffee (Filter Coffee)",
-        ing: "Brewed by slowly passing hot water through ground coffee.",
-        ingLabel: "About",
+        ing: "3000",
+        ingLabel: "RWF  ",
       },
       {
         name: "Cold Brew",
-        ing: "Coffee steeped in cold water for hours; smooth and less acidic.",
-        ingLabel: "About",
+        ing: "3000",
+        ingLabel: "RWF  ",
       },
       {
         name: "Iced Coffee",
-        ing: "Regular brewed coffee served over ice (different from cold brew).",
-        ingLabel: "About",
+        ing: "3000",
+        ingLabel: "RWF ",
       },
     ],
   },
   {
-    id: "tea",
-    label: "Tea",
+    id: "tea ",
+    label: "Tea & chocolate",
     icon: "🍵",
     bannerImg: tea,
     items: [
       {
-        name: "Matcha Latte",
-        price: 5.5,
-        ing: "Matcha, oat milk",
-        
+        name: "African tea",
+        ing: "2000",
+        ingLabel: "RWF  ",
       },
       {
-        name: "Masala Chai",
-        price: 4.1,
-        ing: "Black tea, spices, milk",
-        
+        name: "Spice tea",
+        ing: "2500",
+        ingLabel: "RWF  ",  
       },
       {
-        name: "Ginger Lemon Tea",
-        price: 3.8,
-        ing: "Green tea, ginger, lemon",
-        
+        name: "Ginger Tea",
+        ing: "2000",
+        ingLabel: "RWF  ",
       },
+      {
+        name: "Black Tea",
+        ing: "2500",
+        ingLabel: "RWF  ",
+      },
+      {
+        name: "Lemon Tea",
+        ing: "2500",
+        ingLabel: "RWF  ",
+      },
+      {
+        name: "Tumeric Tea",
+        ing: "2500",
+        ingLabel: "RWF  ",
+      },
+      {
+        name: "Hot Chocolate ",
+        ing: "3000",
+        ingLabel: "RWF  ",
+      },
+
     ],
   },
   {
@@ -96,22 +116,31 @@ export const menuCategories = [
     bannerImg: juice,
     items: [
       {
-        name: "Mango Fresh",
-        price: 4.6,
-        ing: "Mango, ice",
+        name: "Mango juice",
+        ing: "3000",
+        ingLabel: "RWF  ",
+      },
+      {
+        name: "passion juice",
+        ing: "3000",
+        ingLabel: "RWF  " ,
+       
         
       },
       {
-        name: "Tropical Mix",
-        price: 4.9,
-        ing: "Pineapple, orange, mint",
-        
+        name: " Pineapple juice",
+        ing: "3000",
+        ingLabel: "RWF  ",
       },
       {
-        name: "Berry Blast",
-        price: 5.2,
-        ing: "Strawberry, blueberry, yogurt",
-        
+        name: "Tree Tomato juice",
+        ing: "3000",
+        ingLabel: "RWF  ",
+      },
+      {
+        name: " Tropical Mixed juice",
+        ing: "3000",
+        ingLabel: "RWF  ",
       },
     ],
   },
@@ -139,6 +168,80 @@ export const menuCategories = [
         ing: "Citrus, ginger ale",
         
       },
+    ],
+  },
+  {
+    id: "smoothies",
+    label: "Smoothies",
+    icon: "🥤",
+    bannerImg: smoothies,
+    items: [
+      {
+        name: "Mango Smoothie",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Strawberry Smoothie",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Pineapple Smoothie",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+    ],
+  },
+  {
+    id: "ice-cream",
+    label: "Ice Cream",
+    icon: "🍦",
+    bannerImg: ice,
+    items: [
+      {
+        name: "Vanilla Ice Cream",
+        ing: "2000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Chocolate Ice Cream",
+        ing: "2000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Strawberry Ice Cream",
+        ing: "2000",
+        ingLabel: "RWF",
+      },
+    ],
+  },
+  {
+    id: "milkshakes",
+    label: "Milkshakes",
+    icon: "🥛",
+    bannerImg: milk,
+    items: [
+      {
+        name: "Vanilla Milkshake",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Chocolate Milkshake",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+      {
+        name: "Strawberry Milkshake",
+        ing: "4000",
+        ingLabel: "RWF",
+      },
+        {
+        name: "Banana Milkshake",
+        ing: "4000",
+        ingLabel: "RWF",
+        }
     ],
   },
   {

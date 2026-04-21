@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import heroImg from "../../assets/images/hero.png";
+import herobg from "../../assets/images/herobg.png";
 
 export default function Hero() {
     const [offsetY, setOffsetY] = useState(0);
@@ -20,9 +20,10 @@ export default function Hero() {
                 style={{ transform: `translateY(${offsetY}px)` }}
             >
                 <img
-                    src={heroImg}
+                    src={herobg}
                     alt="Coffee background"
-                    className="w-full h-[120%] object-cover scale-105"
+                    className="w-full h-full object-cover object-right md:object-center "
+                style={{ transform: `translateY(${offsetY * 0.3}px)` }}
                 />
 
                 {/* 🔹 Gradient overlay */}
@@ -40,9 +41,9 @@ export default function Hero() {
                             Real Experience.
                         </h1>
 
-                        <p className="text-white md:text-lg max-w-md">
+                        <p className="text-[#7B3F00] md:text-lg max-w-md">
                             Discover handcrafted beverages and delicious meals made with
-                            passion. A place where taste meets comfort.
+                            passion. A place where taste meets comfort.<h3 className="text-brown md:text-lg font-semibold">AT ITETEROCourtyardCoffeeShop</h3>
                         </p>
 
                         {/* CTA */}

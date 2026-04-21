@@ -1,5 +1,4 @@
 import { useState } from "react";
-import emailjs from '@emailjs/browser';
 import {
   contactFooter,
   contactHeader,
@@ -16,13 +15,29 @@ const initialForm = {
 export default function ContactSection() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState({ type: "", text: "" });
+  const phoneHref = `tel:${contactInfo.phone.replace(/[^\d+]/g, "")}`;
+  const emailHref = `mailto:${contactInfo.email}`;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const buildMailtoHref = () => {
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      "",
+      "Message:",
+      form.message,
+    ].join("\n");
+
+    return `${emailHref}?subject=${encodeURIComponent(
+      form.subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.subject || !form.message) {
@@ -36,36 +51,12 @@ export default function ContactSection() {
       return;
     }
 
-    setStatus({ type: "", text: "Sending..." });
-
-    try {
-      // Replace with your EmailJS service ID, template ID, and public key
-      const serviceID = 'your_service_id';
-      const templateID = 'your_template_id';
-      const publicKey = 'your_public_key';
-
-      const templateParams = {
-        from_name: form.name,
-        from_email: form.email,
-        subject: form.subject,
-        message: form.message,
-        to_email: contactInfo.email,
-      };
-
-      await emailjs.send(serviceID, templateID, templateParams, publicKey);
-
-      setStatus({
-        type: "success",
-        text: "Message sent successfully!",
-      });
-      setForm(initialForm);
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      setStatus({
-        type: "error",
-        text: "Failed to send message. Please try again.",
-      });
-    }
+    window.location.href = buildMailtoHref();
+    setStatus({
+      type: "success",
+      text: `Your email app is opening to send this message to ${contactInfo.email}.`,
+    });
+    setForm(initialForm);
   };
 
   return (
@@ -95,6 +86,8 @@ export default function ContactSection() {
                 placeholder="Name"
                 value={form.name}
                 onChange={handleChange}
+                autoComplete="name"
+                required
                 className="w-full rounded-xl border border-[#7B3F00]/20 px-4 py-3 focus:border-[#7B3F00] focus:outline-none"
               />
               <input
@@ -103,6 +96,8 @@ export default function ContactSection() {
                 placeholder="Email"
                 value={form.email}
                 onChange={handleChange}
+                autoComplete="email"
+                required
                 className="w-full rounded-xl border border-[#7B3F00]/20 px-4 py-3 focus:border-[#7B3F00] focus:outline-none"
               />
               <input
@@ -111,6 +106,7 @@ export default function ContactSection() {
                 placeholder="Subject"
                 value={form.subject}
                 onChange={handleChange}
+                required
                 className="w-full rounded-xl border border-[#7B3F00]/20 px-4 py-3 focus:border-[#7B3F00] focus:outline-none"
               />
               <textarea
@@ -119,6 +115,7 @@ export default function ContactSection() {
                 placeholder="Message"
                 value={form.message}
                 onChange={handleChange}
+                required
                 className="w-full rounded-xl border border-[#7B3F00]/20 px-4 py-3 focus:border-[#7B3F00] focus:outline-none"
               />
 
@@ -179,9 +176,9 @@ export default function ContactSection() {
               </h3>
 
               <p className="text-sm text-[#7B3F00]/70">
-                Phone: <a href={`tel:${contactInfo.phone}`} className="text-[#7B3F00] hover:underline">{contactInfo.phone}</a>
+                Phone: <a href={phoneHref} className="text-[#7B3F00] hover:underline">{contactInfo.phone}</a>
                 <br />
-                Email: <a href={`mailto:${contactInfo.email}`} className="text-[#7B3F00] hover:underline">{contactInfo.email}</a>
+                Email: <a href={emailHref} className="text-[#7B3F00] hover:underline">{contactInfo.email}</a>
               </p>
             </div>
 
@@ -190,8 +187,14 @@ export default function ContactSection() {
 
               <div className="flex gap-4 text-sm text-[#7B3F00]">
                 {contactInfo.socials.map((social) => (
-                  <a key={social} href="#" className="transition hover:text-black">
-                    {social}
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:text-black"
+                  >
+                    {social.label}
                   </a>
                 ))}
               </div>
@@ -205,6 +208,9 @@ export default function ContactSection() {
           © {new Date().getFullYear()} {contactFooter.brand}
         </p>
         <p className="mt-2 text-xs text-[#7B3F00]/40">{contactFooter.line}</p>
+        <p className="mt-2 text-xs font-medium tracking-[0.18em] text-black uppercase">
+          Powered by {contactFooter.powerdBy}
+        </p>
       </footer>
     </section>
   );

@@ -38,3 +38,13 @@ export const activitiesBanner = {
   title: "Established on 15/5/2026",
   subtitle: "Proudly Serving Since 15/5/2026",
 };
+
+export const activitiesDelivery = {
+  title: "Fast Delivery",
+  subtitle: "Get your coffee delivered to your door.",
+  phone: "250788201907",
+  href: "tel:+250788201907",
+  buttonText: "Call Now",
+  helperText:
+    "Tap to open your dialer on mobile. On desktop, click-to-call works on supported devices.",
+};

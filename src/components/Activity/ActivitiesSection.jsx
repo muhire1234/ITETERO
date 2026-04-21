@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { activitiesData, activitiesBanner } from "../../data/Activities";
+import {
+    activitiesData,
+    activitiesBanner,
+} from "../../data/Activities";
+
 export default function ActivitiesSection() {
     const [visible, setVisible] = useState([]);
     const [reduceMotion, setReduceMotion] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
